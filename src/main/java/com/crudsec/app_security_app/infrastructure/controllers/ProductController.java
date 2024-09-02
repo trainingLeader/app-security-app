@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crudsec.app_security_app.ProductValidation;
 import com.crudsec.app_security_app.application.services.IProductService;
 import com.crudsec.app_security_app.domain.entity.Product;
 
@@ -28,6 +29,9 @@ import jakarta.validation.Valid;
 public class ProductController {
     @Autowired
     private IProductService service;
+
+    @Autowired
+    private ProductValidation validation;
 
     @GetMapping
     public List<Product> list() {
@@ -45,6 +49,7 @@ public class ProductController {
     
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Product product, BindingResult result) {
+        validation.validate(product, result);
         if (result.hasFieldErrors()) {
             return validation(result);
         }
@@ -53,6 +58,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Product product, BindingResult result, @PathVariable Long id) {
+        validation.validate(product, result);
         if (result.hasFieldErrors()) {
             return validation(result);
         }
