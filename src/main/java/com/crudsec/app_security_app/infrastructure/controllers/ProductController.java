@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crudsec.app_security_app.ProductValidation;
 import com.crudsec.app_security_app.application.services.IProductService;
 import com.crudsec.app_security_app.domain.entity.Product;
 
@@ -80,4 +81,6 @@ public class ProductController {
         });
         return ResponseEntity.badRequest().body(errors);
     }
+
+    
 }
