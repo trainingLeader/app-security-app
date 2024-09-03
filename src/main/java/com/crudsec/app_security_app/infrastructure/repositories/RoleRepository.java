@@ -1,6 +1,6 @@
 package com.crudsec.app_security_app.infrastructure.repositories;
 
-import java.util.*;
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import com.crudsec.app_security_app.domain.entity.Role;

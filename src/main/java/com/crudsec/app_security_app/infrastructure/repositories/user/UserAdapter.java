@@ -45,6 +45,9 @@ public class UserAdapter implements IUserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
-
+    @Override
+    public boolean existsByUsername(String username) {
+        return repository.existsByUsername(username);
+    }
 
 }
