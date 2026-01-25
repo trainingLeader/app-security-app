@@ -59,4 +59,9 @@ public class ProductAdapter implements IProductService {
         });
         return productOptional;
     }
+
+    @Override
+    public boolean existsByName(String name) {
+        return repository.existsByName(name);
+    }
 }
